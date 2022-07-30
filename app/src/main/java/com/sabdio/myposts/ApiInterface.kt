@@ -8,6 +8,6 @@ interface ApiInterface {
     @GET("/posts")
     fun getPosts(): Call<List<Post>>
 
-    @GET("/post/{postId}")
-    fun getPostById(@Path("postId") post: Int)
+//    @GET("/post/{postId}")
+//    fun getPostById(@Path("postId") post: Int)
 }

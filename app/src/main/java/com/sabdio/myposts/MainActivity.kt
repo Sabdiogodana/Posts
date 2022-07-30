@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding =ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
         fetchPosts()
     }
     
@@ -25,13 +25,14 @@ class MainActivity : AppCompatActivity() {
         
         
         request.enqueue(object : Callback<List<Post>> {
-            override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
+            override fun onResponse(call: Call<List<Post>>, response
+            : Response<List<Post>>) {
                 if (response.isSuccessful){
-                    var post = response.body()
-                    Toast.makeText(baseContext, "fetched ${post!!.size} posts", Toast.LENGTH_SHORT).show()
+                    var post = response.body()!!
+                    Toast.makeText(baseContext, "fetched ${post.size} posts", Toast.LENGTH_SHORT).show()
 
                     var adapter = PostRvAdapter(baseContext,post)
-                    Log.d("Tag",post.toString())
+                    Log.d("TAG",post.toString())
                     binding.rvPosts.adapter = adapter
                     binding.rvPosts.layoutManager= LinearLayoutManager(baseContext)
             }

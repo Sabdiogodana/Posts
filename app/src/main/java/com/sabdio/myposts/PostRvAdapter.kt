@@ -8,7 +8,7 @@ import com.sabdio.myposts.databinding.PostsListItemBinding
 
 class PostRvAdapter(var context: Context,    var posts: List<Post>): RecyclerView.Adapter<PostsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsViewHolder {
-        var binding = PostsListItemBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+        var binding = PostsListItemBinding.inflate(LayoutInflater.from(context),parent, false)
         return PostsViewHolder(binding)
     }
 
