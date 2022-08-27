@@ -29,9 +29,12 @@ class MainActivity : AppCompatActivity() {
             : Response<List<Post>>) {
                 if (response.isSuccessful){
                     var post = response.body()!!
+//                    if (post=null){
+//                        displayposts(post)
+//                    }
                     Toast.makeText(baseContext, "fetched ${post.size} posts", Toast.LENGTH_SHORT).show()
 
-                    var adapter = PostRvAdapter(baseContext,post)
+                    var adapter = PostRvAdapter(post)
                     Log.d("TAG",post.toString())
                     binding.rvPosts.adapter = adapter
                     binding.rvPosts.layoutManager= LinearLayoutManager(baseContext)
@@ -44,5 +47,8 @@ class MainActivity : AppCompatActivity() {
 
         })
     }
+//    fun displayposts(postsList: List<Post>){
+//        binding.rvPosts
+//    }
 }
 
